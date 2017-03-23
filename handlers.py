@@ -52,6 +52,9 @@ def watermark_image(original, watermark_text):
         font_size += 1
         font = ImageFont.truetype(font_path, font_size)
 
+    font_size -= 1
+    font = ImageFont.truetype(font_path, font_size)
+
     draw.text((10, 10), watermark_text, font=font) # put the text on the image
 
     io = StringIO.StringIO()
