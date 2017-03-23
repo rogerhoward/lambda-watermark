@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 import os, boto3, StringIO
-from PIL import Image, ImageDraw
+from PIL import Image, ImageDraw, ImageFont
 import config
 
 s3 = boto3.client('s3')
@@ -38,17 +38,24 @@ def watermark(event, context):
 
 def watermark_image(original, watermark_text):
     main_image = Image.open(original)
+    draw = ImageDraw.Draw(main_image)
 
-    watermark_image = Image.new("RGBA", main_image.size)
-    watermark_drawing = ImageDraw.ImageDraw(watermark_image, "RGBA")
-    watermark_drawing.text((10, 10), watermark_text)
+    # Scale text to width of image
+    img_fraction = 0.80
 
-    watermark_mask = watermark_image.convert("L").point(lambda x: min(x, 100))
-    watermark_image.putalpha(watermark_mask)
-    main_image.paste(watermark_image, None, watermark_image)
+    font_path = os.path.join(config.PARENT_DIRECTORY, 'static', 'Arial.ttf')
+    font_size = 1  # starting font size
+    font = ImageFont.truetype(font_path, font_size)
+
+    while font.getsize(watermark_text)[0] < img_fraction * main_image.size[0]:
+        # iterate until the text size is just larger than the criteria
+        font_size += 1
+        font = ImageFont.truetype(font_path, font_size)
+
+    draw.text((10, 10), watermark_text, font=font) # put the text on the image
 
     io = StringIO.StringIO()
-    main_image.save(io, 'PNG')  # Save Image instance to StringIO, to avoid writing to disk
+    main_image.save(io, 'JPEG')  # Save Image instance to StringIO, to avoid writing to disk
     io.seek(0)  # Seek back to 0th byte for good measure
     return io
 
