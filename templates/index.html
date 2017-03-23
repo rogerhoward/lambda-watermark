@@ -20,7 +20,7 @@
     <tbody>
     {% for image in images %}
         <tr>
-            <td><a href="./{{ image }}" role="button" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span></a> <a href="./{{ image }}">{{ image }}</a></td>
+            <td><a href="{{ context.BUCKET_URL }}/{{ image }}">{{ image }}</a></td>
         </tr>
     {% endfor %}
     </tbody>

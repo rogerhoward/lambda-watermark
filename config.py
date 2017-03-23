@@ -28,6 +28,7 @@ PARENT_DIRECTORY = os.path.dirname(os.path.abspath(__file__))
 
 IN_BUCKET = 'zwatermark-in'
 OUT_BUCKET = 'zwatermark-out'
+BUCKET_URL = 'http://zwatermark-out.s3-website-us-east-1.amazonaws.com'
 
 WATERMARK_FILE = os.path.join(PARENT_DIRECTORY, 'watermark.png')
 
@@ -38,4 +39,5 @@ ALLOWED_EXTENSIONS = ['jpg', 'png', ]
 ### Sanitized dict for passing to templates
 ################################################################################
 
-CONTEXT = {'PROJECT_NAME': PROJECT_NAME, 'URL_PREFIX': URL_PREFIX, 'OUT_BUCKET': OUT_BUCKET}
+CONTEXT = {'PROJECT_NAME': PROJECT_NAME, 'URL_PREFIX': URL_PREFIX, 'OUT_BUCKET': OUT_BUCKET, 'BUCKET_URL': BUCKET_URL}
+
