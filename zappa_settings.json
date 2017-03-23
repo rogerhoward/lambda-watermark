@@ -7,7 +7,7 @@
         "app_function": "server.app", 
 
         "events": [{
-            "function": "handler.watermarks",
+            "function": "handlers.watermark",
             "event_source": {
                   "arn":  "arn:aws:s3:::zwatermark-in",
                   "events": [
