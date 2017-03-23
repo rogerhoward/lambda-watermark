@@ -20,7 +20,7 @@
     <tbody>
     {% for image in images %}
         <tr>
-            <td><a href="{{ context.BUCKET_URL }}/{{ image }}">{{ image }}</a></td>
+            <td><a href="{{ context.BUCKET_URL }}/{{ image }}"><img src="{{ context.BUCKET_URL }}/">{{ image }}</a></td>
         </tr>
     {% endfor %}
     </tbody>
