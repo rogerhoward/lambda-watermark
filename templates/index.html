@@ -1,0 +1,33 @@
+
+{% extends "base.html" %}
+
+{% block title %}Home page{% endblock %}
+
+{% block css %}
+{% endblock %}
+
+{% block content %}
+
+<h2>{{ context.PROJECT_NAME }}</h2>
+
+
+<table class="table table-striped table-bordered table-hover table-condensed">
+    <thead>
+        <tr>
+            <th>Filename</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for image in images %}
+        <tr>
+            <td><a href="./{{ image }}" role="button" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span></a> <a href="./{{ image }}">{{ image }}</a></td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
+
+{% block js %}
+
+{% endblock %}

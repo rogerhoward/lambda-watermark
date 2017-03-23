@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}{% endblock title %}</title>
+    <link rel="icon" href="{{ context.URL_PREFIX }}/static/favicon.png" sizes="16x16" type="image/png">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Grand+Hotel|Great+Vibes|Roboto|Rock+Salt" rel="stylesheet">
+
+    <link href="{{ context.URL_PREFIX }}/static/css/base.css" rel="stylesheet" type="text/css">
+    {% block css %}{% endblock css %}
+  </head>
+
+  <body>
+    
+  <!-- body container -->
+  <div id="body-content" class="container-fluid" role="main">
+
+    {% block content %}
+    {% endblock content %}
+
+    <hr>
+
+    <footer>
+        <p>Watermark With Lambda</p>
+    </footer>
+
+  </div>
+  <!-- /body container -->
+
+  <!-- js container -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+  {% block js %}{% endblock js %}
+  <!-- /js container -->
+
+  </body>
+</html>

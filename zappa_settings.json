@@ -1,0 +1,20 @@
+{
+    "dev": {
+        "project_name": "lambda-watermark",
+        "s3_bucket": "zwatermark-config",
+        "timeout_seconds": 300,
+        
+        "app_function": "server.app", 
+
+        "events": [{
+            "function": "handler.watermarks",
+            "event_source": {
+                  "arn":  "arn:aws:s3:::zwatermark-in",
+                  "events": [
+                    "s3:ObjectCreated:*"
+                  ]
+            }
+        }],
+
+    }
+}
