@@ -28,7 +28,7 @@ PARENT_DIRECTORY = os.path.dirname(os.path.abspath(__file__))
 
 IN_BUCKET = 'zwatermark-in'
 OUT_BUCKET = 'zwatermark-out'
-BUCKET_URL = 'http://zwatermark-out.s3-website-us-east-1.amazonaws.com'
+BUCKET_URL = 'https://zwatermark-out.s3.amazonaws.com'
 
 WATERMARK_FILE = os.path.join(PARENT_DIRECTORY, 'watermark.png')
 
